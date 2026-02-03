@@ -3,209 +3,349 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Leo Näreskog</title>
+    <title>Leo Näreskog - CV</title>
     <style>
+        /* A4 Page Settings */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
-            color: #333;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 11pt;
+            line-height: 1.4;
+            color: #000000;
+            background-color: #ffffff;
+            max-width: 210mm; /* A4 width */
+            margin: 0 auto;
+            padding: 20mm 25mm; /* A4 margins */
         }
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            background-color: white;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        .header {
-            background: linear-gradient(135deg, #1a237e, #283593);
-            color: white;
-            padding: 40px 30px;
-        }
-        .header h1 {
+        
+        /* Headers */
+        h1, h2, h3, h4 {
             margin: 0;
-            font-size: 2.8em;
+            font-weight: normal;
+        }
+        
+        h1 {
+            font-size: 24pt;
+            margin-bottom: 4pt;
+            letter-spacing: 1px;
+        }
+        
+        h2 {
+            font-size: 14pt;
+            margin: 20pt 0 8pt 0;
+            padding-bottom: 4pt;
+            border-bottom: 1px solid #000;
+        }
+        
+        h3 {
+            font-size: 12pt;
+            margin: 12pt 0 4pt 0;
             font-weight: 600;
         }
-        .header .subtitle {
-            font-size: 1.2em;
-            opacity: 0.9;
-            margin-top: 5px;
-        }
-        .content {
-            padding: 30px;
-        }
-        .section {
-            margin-bottom: 30px;
-        }
-        .section h2 {
-            color: #1a237e;
-            border-bottom: 3px solid #3949ab;
-            padding-bottom: 8px;
-            margin-bottom: 20px;
-            font-size: 1.8em;
-        }
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        .info-item {
-            background-color: #f1f8ff;
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 5px solid #3949ab;
-        }
-        .info-item h3 {
-            margin-top: 0;
-            color: #1a237e;
-        }
-        .info-item ul {
-            padding-left: 20px;
-        }
-        .info-item li {
-            margin-bottom: 5px;
-        }
-        .timeline-item {
-            margin-bottom: 25px;
-        }
-        .timeline-item h3 {
-            margin: 0 0 5px 0;
-            color: #1a237e;
-        }
-        .date {
-            color: #666;
-            font-style: italic;
-            margin-bottom: 8px;
-        }
-        .timeline-item p {
-            margin: 5px 0;
-            line-height: 1.5;
-        }
+        
+        /* Contact Info */
         .contact-info {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 10px;
-            font-size: 1.05em;
+            gap: 15pt;
+            margin-bottom: 20pt;
+            font-size: 10pt;
         }
-        .contact-info a {
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 5pt;
+        }
+        
+        /* Sections */
+        .section {
+            margin-bottom: 16pt;
+        }
+        
+        /* Experience & Education */
+        .item {
+            margin-bottom: 12pt;
+            page-break-inside: avoid;
+        }
+        
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4pt;
+        }
+        
+        .item-title {
+            font-weight: 600;
+        }
+        
+        .item-subtitle {
+            font-style: italic;
+            margin-bottom: 2pt;
+        }
+        
+        .item-date {
+            font-style: italic;
+            white-space: nowrap;
+        }
+        
+        .item-description {
+            margin: 0;
+            text-align: justify;
+        }
+        
+        /* Lists */
+        ul {
+            margin: 4pt 0;
+            padding-left: 15pt;
+        }
+        
+        li {
+            margin-bottom: 2pt;
+        }
+        
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8pt;
+        }
+        
+        .skill-category {
+            margin-bottom: 8pt;
+        }
+        
+        .skill-category strong {
+            display: block;
+            margin-bottom: 2pt;
+        }
+        
+        /* Divider */
+        hr {
+            border: none;
+            border-top: 1px solid #000;
+            margin: 20pt 0;
+        }
+        
+        /* PDF Controls */
+        .pdf-controls {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            background: white;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .pdf-button {
+            background: #000;
             color: white;
-            text-decoration: none;
-            background-color: rgba(255, 255, 255, 0.15);
-            padding: 8px 15px;
-            border-radius: 20px;
-            transition: background-color 0.3s;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-family: sans-serif;
+            font-size: 12px;
+            border-radius: 3px;
+            margin-right: 5px;
         }
-        .contact-info a:hover {
-            background-color: rgba(255, 255, 255, 0.25);
+        
+        .pdf-button:hover {
+            background: #333;
         }
-        .tag {
-            display: inline-block;
-            background-color: #e8eaf6;
-            color: #1a237e;
-            padding: 5px 12px;
-            margin: 5px 5px 5px 0;
-            border-radius: 15px;
-            font-size: 0.9em;
+        
+        /* Print Optimizations */
+        @media print {
+            .pdf-controls {
+                display: none;
+            }
+            body {
+                padding: 15mm 20mm;
+            }
+        }
+        
+        /* Page break avoidance */
+        .page-break {
+            page-break-before: always;
+        }
+        
+        .avoid-break {
+            page-break-inside: avoid;
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Leo Näreskog</h1>
-            <div class="subtitle">Civilingenjörsstudent i Industriell ekonomi vid KTH</div>
-            <div class="contact-info">
-                <a href="tel:0708102086">📞 070-810 20 86</a>
-                <a href="mailto:leo.nareskog@gmail.com">✉️ leo.nareskog@gmail.com</a>
-                <a>📍 Stockholm, Sverige</a>
-            </div>
+    <!-- PDF Controls -->
+    <div class="pdf-controls">
+        <button class="pdf-button" onclick="printPage()">Skriv ut</button>
+        <button class="pdf-button" onclick="saveAsPDF()">Spara som PDF</button>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <h1>Leo Näreskog</h1>
+        <div class="contact-info">
+            <div class="contact-item">📍 Stockholm, Sverige</div>
+            <div class="contact-item">📞 070-810 20 86</div>
+            <div class="contact-item">✉️ leo.nareskog@gmail.com</div>
         </div>
-        <div class="content">
-            <div class="section">
-                <h2>Sammanfattning</h2>
-                <p>Civilingenjörsstudent i Industriell ekonomi på KTH med stark studiemotivation och ett tydligt intresse för teknik och finans Har professionell erfarenhet inom mjukvaruutveckling och kundnära försäljning samt ett långsiktigt engagemang inom kost och träning som har utvecklat disciplin, struktur och prestationsfokus.</p>
+    </header>
+    
+    <hr>
+    
+    <!-- Summary -->
+    <div class="section">
+        <p>Civilingenjörsstudent i Industriell ekonomi vid KTH med stark studiemotivation och ett tydligt intresse för teknik och affär. Har professionell erfarenhet inom mjukvaruutveckling och kundnära försäljning samt ett långsiktigt engagemang inom kost och träning som har utvecklat disciplin, struktur och prestationsfokus.</p>
+    </div>
+    
+    <hr>
+    
+    <!-- Education -->
+    <div class="section">
+        <h2>UTBILDNING</h2>
+        
+        <div class="item">
+            <div class="item-header">
+                <div>
+                    <h3 class="item-title">M.Sc. in Industrial Engineering and Management</h3>
+                    <div class="item-subtitle">KTH Royal Institute of Technology</div>
+                </div>
+                <div class="item-date">Aug 2025 – Nuvarande</div>
             </div>
-
-            <div class="section">
-                <h2>Kompetens</h2>
-                <div class="info-grid">
-                    <div class="info-item">
-                        <h3>Teknik</h3>
-                        <ul>
-                            <li>Python</li>
-                            <li>Git</li>
-                            <li>Mjukvaruutveckling</li>
-                            <li>Webbutveckling</li>
-                        </ul>
-                    </div>
-                    <div class="info-item">
-                        <h3>Företagande</h3>
-                        <ul>
-                            <li>Försäljning</li>
-                            <li>Behovsanalys</li>
-                            <li>Relationsbyggande</li>
-                            <li>Affärskommunikation</li>
-                        </ul>
-                    </div>
-                    <div class="info-item">
-                        <h3>Språk</h3>
-                        <ul>
-                            <li>Svenska (modersmål)</li>
-                            <li>Engelska (flytande)</li>
-                            <li>Tyska (god kunskap)</li>
-                        </ul>
-                    </div>
-                    <div class="info-item">
-                        <h3>Personliga egenskaper</h3>
-                        <p>
-                            <span class="tag">Strukturerad</span>
-                            <span class="tag">Prestationsfokuserad</span>
-                            <span class="tag">Disciplinerad</span>
-                            <span class="tag">Målstyrd</span>
-                            <span class="tag">Teamarbetare</span>
-                        </p>
-                    </div>
+            <p class="item-description">Betyg: 5.0/5.0</p>
+        </div>
+        
+        <div class="item">
+            <div class="item-header">
+                <div>
+                    <h3 class="item-title">Natural Science</h3>
+                    <div class="item-subtitle">Kungsholmens Gymnasium</div>
                 </div>
+                <div class="item-date">Aug 2022 – Jun 2025</div>
             </div>
-
-            <div class="section">
-                <h2>Arbetslivserfarenhet</h2>
-                <div class="timeline-item">
-                    <h3>Säljare med kundansvar, Mc-Boden (Deltid)</h3>
-                    <div class="date">april 2021 - Nuvarande</div>
-                    <p>Flerårig erfarenhet av kundnära försäljning i butiksmiljö med fokus på behovsanalys, relationsbyggande och affärsmässig kommunikation. Van att arbeta målstyrt i högt tempo och ta ansvar för hela kundupplevelsen, från första kontakt till avslut.</p>
+            <p class="item-description">Betyg: 22.1/22.5</p>
+        </div>
+    </div>
+    
+    <hr>
+    
+    <!-- Work Experience -->
+    <div class="section">
+        <h2>ARBETSLIVSERFARENHET</h2>
+        
+        <div class="item">
+            <div class="item-header">
+                <div>
+                    <h3 class="item-title">IT-medarbetare</h3>
+                    <div class="item-subtitle">Sektionen för Industriell ekonomi, KTH</div>
                 </div>
-                <div class="timeline-item">
-                    <h3>IT-medarbetare, Sektionen för Industriell ekonomi KTH</h3>
-                    <div class="date">september 2025 - Nuvarande</div>
-                    <p>IT-medarbetare på sektionen med ansvar inom mjukvaru- och webbutveckling. Arbetar med utveckling, underhåll och förbättring av digitala lösningar med fokus på funktionalitet, användarupplevelse och tillförlitlighet. Van att arbeta strukturerat, samarbeta i team och omsätta behov till tekniska lösningar.</p>
-                </div>
+                <div class="item-date">Sep 2025 – Nuvarande</div>
             </div>
-
-            <div class="section">
-                <h2>Utbildning</h2>
-                <div class="timeline-item">
-                    <h3>MSc in Industrial Engineering and Management, KTH</h3>
-                    <div class="date">augusti 2025 - Nuvarande</div>
-                    <p>Betyg: 5.0/5.0</p>
+            <p class="item-description">IT-medarbetare på sektionen med ansvar inom mjukvaru- och webbutveckling. Arbetar med utveckling, underhåll och förbättring av digitala lösningar med fokus på funktionalitet, användarupplevelse och tillförlitlighet. Van att arbeta strukturerat, samarbeta i team och omsätta behov till tekniska lösningar.</p>
+        </div>
+        
+        <div class="item">
+            <div class="item-header">
+                <div>
+                    <h3 class="item-title">Säljare med kundansvar</h3>
+                    <div class="item-subtitle">Mc-Boden (Deltid)</div>
                 </div>
-                <div class="timeline-item">
-                    <h3>Natural Science, Kungsholmens Gymnasium</h3>
-                    <div class="date">augusti 2022 - juni 2025</div>
-                    <p>Betyg: 22.1/22.5</p>
-                </div>
+                <div class="item-date">Apr 2021 – Nuvarande</div>
             </div>
-
-            <div class="section">
-                <h2>Intressen</h2>
-                <p>Jag är en mycket aktiv person med ett starkt intresse för träning och fysisk utveckling, särskilt styrketräning, simning och skidåkning. Träning är en viktig del av min vardag och har gett mig disciplin, uthållighet och ett långsiktigt mindset. Utöver träning är jag naturintresserad och uppskattar att vandra, resa och spendera tid utomhus.</p>
+            <p class="item-description">Flerårig erfarenhet av kundnära försäljning i butiksmiljö med fokus på behovsanalys, relationsbyggande och affärsmässig kommunikation. Van att arbeta målstyrt i högt tempo och ta ansvar för hela kundupplevelsen, från första kontakt till avslut.</p>
+        </div>
+    </div>
+    
+    <hr>
+    
+    <!-- Skills -->
+    <div class="section">
+        <h2>KOMPETENS</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <strong>Teknisk</strong>
+                <div>Python</div>
+                <div>Git</div>
+                <div>Mjukvaruutveckling</div>
+                <div>Webbutveckling</div>
+            </div>
+            
+            <div class="skill-category">
+                <strong>Affär</strong>
+                <div>Försäljning</div>
+                <div>Behovsanalys</div>
+                <div>Relationsbyggande</div>
+                <div>Affärskommunikation</div>
+            </div>
+            
+            <div class="skill-category">
+                <strong>Språk</strong>
+                <div>Svenska (Modersmål)</div>
+                <div>Engelska (Flytande)</div>
+                <div>Tyska (God kunskap)</div>
+            </div>
+            
+            <div class="skill-category">
+                <strong>Personligt</strong>
+                <div>Disciplin</div>
+                <div>Struktur</div>
+                <div>Prestationsfokus</div>
+                <div>Teamarbete</div>
             </div>
         </div>
     </div>
+    
+    <hr>
+    
+    <!-- Activities & Interests -->
+    <div class="section">
+        <h2>AKTIVITETER & INTRESSEN</h2>
+        <p>Mycket aktiv person med starkt intresse för träning och fysisk utveckling, särskilt styrketräning, simning och skidåkning. Träning är en viktig del av min vardag och har gett mig disciplin, uthållighet och ett långsiktigt mindset. Utöver träning är jag naturintresserad och uppskattar att vandra, resa och spendera tid utomhus.</p>
+    </div>
+
+    <script>
+        function saveAsPDF() {
+            const element = document.body;
+            const opt = {
+                margin: [15, 15, 15, 15],
+                filename: 'Leo_Nareskog_CV.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { 
+                    scale: 2,
+                    useCORS: true,
+                    letterRendering: true
+                },
+                jsPDF: { 
+                    unit: 'mm', 
+                    format: 'a4', 
+                    orientation: 'portrait' 
+                }
+            };
+            
+            html2pdf().set(opt).from(element).save();
+        }
+        
+        function printPage() {
+            window.print();
+        }
+        
+        // Auto-hide PDF controls when printing
+        window.addEventListener('beforeprint', function() {
+            document.querySelector('.pdf-controls').style.display = 'none';
+        });
+        
+        window.addEventListener('afterprint', function() {
+            document.querySelector('.pdf-controls').style.display = 'block';
+        });
+    </script>
 </body>
 </html>
