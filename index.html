@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leo Näreskog - CV</title>
     <style>
-        /* A4 Page Settings */
         @page {
             size: A4;
             margin: 0;
@@ -19,12 +18,12 @@
             line-height: 1.4;
             color: #000000;
             background-color: #ffffff;
-            max-width: 210mm; /* A4 width */
+            max-width: 210mm;
             margin: 0 auto;
-            padding: 20mm 25mm; /* A4 margins */
+            padding: 20mm 25mm;
+            box-sizing: border-box;
         }
         
-        /* Headers */
         h1, h2, h3, h4 {
             margin: 0;
             font-weight: normal;
@@ -49,7 +48,6 @@
             font-weight: 600;
         }
         
-        /* Contact Info */
         .contact-info {
             display: flex;
             flex-wrap: wrap;
@@ -64,12 +62,10 @@
             gap: 5pt;
         }
         
-        /* Sections */
         .section {
             margin-bottom: 16pt;
         }
         
-        /* Experience & Education */
         .item {
             margin-bottom: 12pt;
             page-break-inside: avoid;
@@ -100,7 +96,6 @@
             text-align: justify;
         }
         
-        /* Lists */
         ul {
             margin: 4pt 0;
             padding-left: 15pt;
@@ -110,7 +105,6 @@
             margin-bottom: 2pt;
         }
         
-        /* Skills */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -126,14 +120,12 @@
             margin-bottom: 2pt;
         }
         
-        /* Divider */
         hr {
             border: none;
             border-top: 1px solid #000;
             margin: 20pt 0;
         }
         
-        /* PDF Controls */
         .pdf-controls {
             position: fixed;
             top: 10px;
@@ -162,7 +154,6 @@
             background: #333;
         }
         
-        /* Print Optimizations */
         @media print {
             .pdf-controls {
                 display: none;
@@ -172,7 +163,6 @@
             }
         }
         
-        /* Page break avoidance */
         .page-break {
             page-break-before: always;
         }
@@ -184,161 +174,163 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
-    <!-- PDF Controls -->
     <div class="pdf-controls">
         <button class="pdf-button" onclick="printPage()">Skriv ut</button>
         <button class="pdf-button" onclick="saveAsPDF()">Spara som PDF</button>
     </div>
 
-    <!-- Header -->
-    <header>
-        <h1>Leo Näreskog</h1>
-        <div class="contact-info">
-            <div class="contact-item">📍 Stockholm, Sverige</div>
-            <div class="contact-item">📞 070-810 20 86</div>
-            <div class="contact-item">✉️ leo.nareskog@gmail.com</div>
-        </div>
-    </header>
-    
-    <hr>
-    
-    <!-- Summary -->
-    <div class="section">
-        <p>Civilingenjörsstudent i Industriell ekonomi vid KTH med stark studiemotivation och ett tydligt intresse för teknik och affär. Har professionell erfarenhet inom mjukvaruutveckling och kundnära försäljning samt ett långsiktigt engagemang inom kost och träning som har utvecklat disciplin, struktur och prestationsfokus.</p>
-    </div>
-    
-    <hr>
-    
-    <!-- Education -->
-    <div class="section">
-        <h2>UTBILDNING</h2>
-        
-        <div class="item">
-            <div class="item-header">
-                <div>
-                    <h3 class="item-title">Industrial Engineering and Management</h3>
-                    <div class="item-subtitle">KTH Royal Institute of Technology</div>
-                </div>
-                <div class="item-date">Aug 2025 – Nuvarande</div>
+    <div id="cv-content">
+        <header>
+            <h1>Leo Näreskog</h1>
+            <div class="contact-info">
+                <div class="contact-item">📍 Stockholm, Sverige</div>
+                <div class="contact-item">📞 070-810 20 86</div>
+                <div class="contact-item">✉️ leo.nareskog@gmail.com</div>
             </div>
-            <p class="item-description">Betyg: 5.0/5.0</p>
+        </header>
+        
+        <hr>
+        
+        <div class="section">
+            <p>Civilingenjörsstudent i Industriell ekonomi vid KTH med stark studiemotivation och ett tydligt intresse för teknik och affär. Har professionell erfarenhet inom mjukvaruutveckling och kundnära försäljning samt ett långsiktigt engagemang inom kost och träning som har utvecklat disciplin, struktur och prestationsfokus.</p>
         </div>
         
-        <div class="item">
-            <div class="item-header">
-                <div>
-                    <h3 class="item-title">Natural Science</h3>
-                    <div class="item-subtitle">Kungsholmens Gymnasium</div>
-                </div>
-                <div class="item-date">Aug 2022 – Jun 2025</div>
-            </div>
-            <p class="item-description">Betyg: 22.1/22.5</p>
-        </div>
-    </div>
-    
-    <hr>
-    
-    <!-- Work Experience -->
-    <div class="section">
-        <h2>ARBETSLIVSERFARENHET</h2>
+        <hr>
         
-        <div class="item">
-            <div class="item-header">
-                <div>
-                    <h3 class="item-title">IT-medarbetare</h3>
-                    <div class="item-subtitle">Sektionen för Industriell ekonomi, KTH</div>
+        <div class="section">
+            <h2>UTBILDNING</h2>
+            
+            <div class="item">
+                <div class="item-header">
+                    <div>
+                        <h3 class="item-title">Industrial Engineering and Management</h3>
+                        <div class="item-subtitle">KTH Royal Institute of Technology</div>
+                    </div>
+                    <div class="item-date">Aug 2025 – Nuvarande</div>
                 </div>
-                <div class="item-date">Sep 2025 – Nuvarande</div>
-            </div>
-            <p class="item-description">IT-medarbetare på sektionen med ansvar inom mjukvaru- och webbutveckling. Arbetar med utveckling, underhåll och förbättring av digitala lösningar med fokus på funktionalitet, användarupplevelse och tillförlitlighet. Van att arbeta strukturerat, samarbeta i team och omsätta behov till tekniska lösningar.</p>
-        </div>
-        
-        <div class="item">
-            <div class="item-header">
-                <div>
-                    <h3 class="item-title">Säljare med kundansvar</h3>
-                    <div class="item-subtitle">Mc-Boden (Deltid)</div>
-                </div>
-                <div class="item-date">Apr 2021 – Nuvarande</div>
-            </div>
-            <p class="item-description">Flerårig erfarenhet av kundnära försäljning i butiksmiljö med fokus på behovsanalys, relationsbyggande och affärsmässig kommunikation. Van att arbeta målstyrt i högt tempo och ta ansvar för hela kundupplevelsen, från första kontakt till avslut.</p>
-        </div>
-    </div>
-    
-    <hr>
-    
-    <!-- Skills -->
-    <div class="section">
-        <h2>KOMPETENS</h2>
-        <div class="skills-grid">
-            <div class="skill-category">
-                <strong>Teknisk</strong>
-                <div>Python</div>
-                <div>Git</div>
-                <div>Mjukvaruutveckling</div>
-                <div>Webbutveckling</div>
+                <p class="item-description">Betyg: 5.0/5.0</p>
             </div>
             
-            <div class="skill-category">
-                <strong>Affär</strong>
-                <div>Försäljning</div>
-                <div>Behovsanalys</div>
-                <div>Relationsbyggande</div>
-                <div>Affärskommunikation</div>
-            </div>
-            
-            <div class="skill-category">
-                <strong>Språk</strong>
-                <div>Svenska (Modersmål)</div>
-                <div>Engelska (Flytande)</div>
-                <div>Tyska (God kunskap)</div>
-            </div>
-            
-            <div class="skill-category">
-                <strong>Personligt</strong>
-                <div>Disciplin</div>
-                <div>Struktur</div>
-                <div>Prestationsfokus</div>
-                <div>Teamarbete</div>
+            <div class="item">
+                <div class="item-header">
+                    <div>
+                        <h3 class="item-title">Natural Science</h3>
+                        <div class="item-subtitle">Kungsholmens Gymnasium</div>
+                    </div>
+                    <div class="item-date">Aug 2022 – Jun 2025</div>
+                </div>
+                <p class="item-description">Betyg: 22.1/22.5</p>
             </div>
         </div>
-    </div>
-    
-    <hr>
-    
-    <!-- Activities & Interests -->
-    <div class="section">
-        <h2>AKTIVITETER & INTRESSEN</h2>
-        <p>Mycket aktiv person med starkt intresse för träning och fysisk utveckling, särskilt styrketräning, simning och skidåkning. Träning är en viktig del av min vardag och har gett mig disciplin, uthållighet och ett långsiktigt mindset. Utöver träning är jag naturintresserad och uppskattar att vandra, resa och spendera tid utomhus.</p>
+        
+        <hr>
+        
+        <div class="section">
+            <h2>ARBETSLIVSERFARENHET</h2>
+            
+            <div class="item">
+                <div class="item-header">
+                    <div>
+                        <h3 class="item-title">IT-medarbetare</h3>
+                        <div class="item-subtitle">Sektionen för Industriell ekonomi, KTH</div>
+                    </div>
+                    <div class="item-date">Sep 2025 – Nuvarande</div>
+                </div>
+                <p class="item-description">IT-medarbetare på sektionen med ansvar inom mjukvaru- och webbutveckling. Arbetar med utveckling, underhåll och förbättring av digitala lösningar med fokus på funktionalitet, användarupplevelse och tillförlitlighet. Van att arbeta strukturerat, samarbeta i team och omsätta behov till tekniska lösningar.</p>
+            </div>
+            
+            <div class="item">
+                <div class="item-header">
+                    <div>
+                        <h3 class="item-title">Säljare med kundansvar</h3>
+                        <div class="item-subtitle">Mc-Boden (Deltid)</div>
+                    </div>
+                    <div class="item-date">Apr 2021 – Nuvarande</div>
+                </div>
+                <p class="item-description">Flerårig erfarenhet av kundnära försäljning i butiksmiljö med fokus på behovsanalys, relationsbyggande och affärsmässig kommunikation. Van att arbeta målstyrt i högt tempo och ta ansvar för hela kundupplevelsen, från första kontakt till avslut.</p>
+            </div>
+        </div>
+        
+        <hr>
+        
+        <div class="section">
+            <h2>KOMPETENS</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <strong>Teknisk</strong>
+                    <div>Python</div>
+                    <div>Git</div>
+                    <div>Mjukvaruutveckling</div>
+                    <div>Webbutveckling</div>
+                </div>
+                
+                <div class="skill-category">
+                    <strong>Affär</strong>
+                    <div>Försäljning</div>
+                    <div>Behovsanalys</div>
+                    <div>Relationsbyggande</div>
+                    <div>Affärskommunikation</div>
+                </div>
+                
+                <div class="skill-category">
+                    <strong>Språk</strong>
+                    <div>Svenska (Modersmål)</div>
+                    <div>Engelska (Flytande)</div>
+                    <div>Tyska (God kunskap)</div>
+                </div>
+                
+                <div class="skill-category">
+                    <strong>Personligt</strong>
+                    <div>Disciplin</div>
+                    <div>Struktur</div>
+                    <div>Prestationsfokus</div>
+                    <div>Teamarbete</div>
+                </div>
+            </div>
+        </div>
+        
+        <hr>
+        
+        <div class="section">
+            <h2>AKTIVITETER & INTRESSEN</h2>
+            <p>Mycket aktiv person med starkt intresse för träning och fysisk utveckling, särskilt styrketräning, simning och skidåkning. Träning är en viktig del av min vardag och har gett mig disciplin, uthållighet och ett långsiktigt mindset. Utöver träning är jag naturintresserad och uppskattar att vandra, resa och spendera tid utomhus.</p>
+        </div>
     </div>
 
     <script>
         function saveAsPDF() {
-            const element = document.body;
+            const controls = document.querySelector('.pdf-controls');
+            controls.style.display = 'none';
+
+            const element = document.getElementById('cv-content');
+
             const opt = {
-                margin: [15, 15, 15, 15],
+                margin: [15, 20, 15, 20],
                 filename: 'Leo_Nareskog_CV.pdf',
                 image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { 
+                html2canvas: {
                     scale: 2,
                     useCORS: true,
-                    letterRendering: true
+                    letterRendering: true,
+                    scrollY: 0,
+                    windowWidth: document.documentElement.scrollWidth
                 },
-                jsPDF: { 
-                    unit: 'mm', 
-                    format: 'a4', 
-                    orientation: 'portrait' 
+                jsPDF: {
+                    unit: 'mm',
+                    format: 'a4',
+                    orientation: 'portrait'
                 }
             };
-            
-            html2pdf().set(opt).from(element).save();
+
+            html2pdf().set(opt).from(element).save().then(function() {
+                controls.style.display = 'block';
+            });
         }
         
         function printPage() {
             window.print();
         }
         
-        // Auto-hide PDF controls when printing
         window.addEventListener('beforeprint', function() {
             document.querySelector('.pdf-controls').style.display = 'none';
         });
